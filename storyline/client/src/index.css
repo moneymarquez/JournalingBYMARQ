@@ -1,0 +1,457 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --primary: #2C1A0E;
+  --primary-foreground: #F5ECD7;
+  --sidebar-primary: #8B4513;
+  --sidebar-primary-foreground: #F5ECD7;
+  --chart-1: #7C5CBF;
+  --chart-2: #C4622D;
+  --chart-3: #2E7D5E;
+  --chart-4: #B8860B;
+  --chart-5: #2B6CB0;
+  --radius: 0.65rem;
+  
+  /* Book on desk theme */
+  --background: #1C1008;
+  --foreground: #2C1A0E;
+  --card: #FFFEF8;
+  --card-foreground: #2C1A0E;
+  --popover: #FFFEF8;
+  --popover-foreground: #2C1A0E;
+  --secondary: #F7F0E0;
+  --secondary-foreground: #2C1A0E;
+  --muted: #A0825A;
+  --muted-foreground: #7A5C3A;
+  --accent: #2C1A0E;
+  --accent-foreground: #F5ECD7;
+  --destructive: #8B1A1A;
+  --destructive-foreground: #F5ECD7;
+  --border: #D4C9B0;
+  --input: #FFFEF8;
+  --ring: #2C1A0E;
+  --sidebar: #2C1A0E;
+  --sidebar-foreground: #F5ECD7;
+  --sidebar-accent: #8B4513;
+  --sidebar-accent-foreground: #F5ECD7;
+  --sidebar-border: #1A0D05;
+  --sidebar-ring: #D4A853;
+}
+
+body {
+  background-color: #1C1008;
+  background-image: 
+    repeating-linear-gradient(92deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(180deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 40px);
+  font-family: Georgia, serif;
+  color: #2C1A0E;
+}
+
+/* Main app container - full screen book */
+#root {
+  background: #1C1008;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+}
+
+.flex.h-screen {
+  background-color: #F7F0E0 !important;
+  border-radius: 0 !important;
+  max-height: 100vh !important;
+  height: 100vh !important;
+  width: 100% !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Sidebar - Book Spine */
+[class*="sidebar"] {
+  background-color: #2C1A0E !important;
+  border-left: 4px solid #1A0D05 !important;
+  box-shadow: inset -6px 0 12px rgba(0,0,0,0.4) !important;
+  color: #F5ECD7 !important;
+}
+
+/* Sidebar text */
+[class*="sidebar"] * {
+  color: #F5ECD7 !important;
+}
+
+[class*="sidebar"] p,
+[class*="sidebar"] span,
+[class*="sidebar"] div {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+/* App title styling */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, serif;
+  color: #2C1A0E;
+}
+
+/* Sidebar title "Storyline" */
+[class*="sidebar"] h1,
+[class*="sidebar"] h2 {
+  color: #F5ECD7 !important;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: Georgia, serif;
+}
+
+/* Nav buttons - Bookmark tab look */
+[class*="sidebar"] button {
+  color: #F5ECD7 !important;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+[class*="sidebar"] button[class*="default"] {
+  background-color: #8B4513 !important;
+  border-left: 3px solid #D4A853 !important;
+  border-radius: 0 20px 20px 0 !important;
+  color: #F5ECD7 !important;
+}
+
+[class*="sidebar"] button[class*="ghost"] {
+  color: #F5ECD7 !important;
+  background-color: transparent !important;
+}
+
+/* Section and category labels */
+[class*="sidebar"] h3 {
+  color: #A0825A !important;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Word count at bottom */
+[class*="sidebar"] [class*="text-muted"] {
+  color: rgba(245,236,215,0.5) !important;
+}
+
+/* Middle Panel - Left Book Page */
+[class*="middle"] {
+  background-color: #F7F0E0 !important;
+  background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(180,160,120,0.15) 27px, rgba(180,160,120,0.15) 28px) !important;
+  box-shadow: inset -8px 0 16px rgba(0,0,0,0.12), 4px 0 8px rgba(0,0,0,0.08) !important;
+}
+
+/* Detail Panel - Right Book Page */
+[class*="detail"],
+[class*="right"] {
+  background-color: #FFFEF8 !important;
+  background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(180,160,120,0.15) 27px, rgba(180,160,120,0.15) 28px) !important;
+  box-shadow: inset 8px 0 16px rgba(0,0,0,0.08) !important;
+  color: #2C1A0E !important;
+}
+
+/* Search bar */
+input[placeholder*="Search"],
+input[type="text"] {
+  background-color: white !important;
+  border: 1px solid #D4C9B0 !important;
+  border-radius: 6px !important;
+  color: #2C1A0E !important;
+}
+
+input[placeholder*="Search"]::placeholder,
+input[type="text"]::placeholder {
+  color: #A0825A !important;
+}
+
+/* Entry cards */
+[class*="card"] {
+  background-color: #FFFEF8 !important;
+  border: 1px solid #E8DFC8 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+  border-left: 3px solid #7C5CBF !important;
+  color: #1A0D05 !important;
+}
+
+[class*="card"] h3,
+[class*="card"] h2,
+[class*="card"] h1 {
+  color: #1A0D05 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+[class*="card"] p,
+[class*="card"] div {
+  color: #3A2817 !important;
+  font-size: 14px !important;
+}
+
+/* Category-specific left border colors */
+[class*="card"]:has([class*="Character"]) {
+  border-left-color: #7C5CBF !important;
+}
+
+[class*="card"]:has([class*="Plot"]) {
+  border-left-color: #C4622D !important;
+}
+
+[class*="card"]:has([class*="Setting"]) {
+  border-left-color: #2E7D5E !important;
+}
+
+[class*="card"]:has([class*="Dialogue"]) {
+  border-left-color: #B8860B !important;
+}
+
+[class*="card"]:has([class*="Theme"]) {
+  border-left-color: #A0334A !important;
+}
+
+[class*="card"]:has([class*="Research"]) {
+  border-left-color: #2B6CB0 !important;
+}
+
+/* Selected entry card */
+[class*="card"][class*="selected"],
+[class*="card"]:focus-within {
+  background-color: #FFF8E7 !important;
+  border-left: 4px solid #8B4513 !important;
+}
+
+/* Tag pills */
+[class*="badge"],
+[class*="pill"],
+[class*="tag"] {
+  background-color: #EDE4D0 !important;
+  color: #7A5C3A !important;
+  border: 1px solid #D4C09A !important;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12px;
+}
+
+/* Entry title */
+[class*="detail"] h2,
+[class*="detail"] h1 {
+  font-family: Georgia, serif;
+  color: #1A0D05 !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+}
+
+/* Entry content */
+[class*="detail"] p,
+[class*="detail"] div[class*="prose"] {
+  font-family: Georgia, serif;
+  color: #1A0D05 !important;
+  line-height: 2.0 !important;
+  font-size: 16px !important;
+}
+
+/* Clip panel - Sticky note look */
+[class*="clip"],
+[class*="snippet"] {
+  background-color: #FFF8DC !important;
+  border: 1px solid #E8D080 !important;
+  color: #2C1A0E !important;
+}
+
+/* Related entries */
+[class*="related"] [class*="card"] {
+  border: 1px dashed #D4C09A !important;
+  background-color: #FFFEF8 !important;
+  color: #1A0D05 !important;
+}
+
+[class*="related"] [class*="card"] h3,
+[class*="related"] [class*="card"] p {
+  color: #1A0D05 !important;
+  font-size: 14px !important;
+}
+
+/* Buttons - Ink stamp style */
+button {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:not([class*="default"]):not([class*="ghost"]):not([class*="outline"]) {
+  background-color: #2C1A0E !important;
+  color: #F5ECD7 !important;
+  border-radius: 4px !important;
+}
+
+/* Spice It Up button - Deep red with gold */
+button[class*="spice"],
+button:has(span:contains("Spice")) {
+  background-color: #8B1A1A !important;
+  color: #D4A853 !important;
+  border: 2px solid #D4A853 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(139,26,26,0.4) !important;
+}
+
+/* AI Panel */
+[class*="ai"],
+[class*="panel"] {
+  background-color: #FFFEF8 !important;
+}
+
+[class*="ai"] [class*="header"],
+[class*="panel"] [class*="header"] {
+  background-color: #2C1A0E !important;
+  color: #F5ECD7 !important;
+}
+
+/* Mode buttons in AI panel */
+[class*="ai"] button,
+[class*="panel"] button {
+  background-color: white !important;
+  border: 1px solid #D4C09A !important;
+  color: #2C1A0E !important;
+}
+
+[class*="ai"] button[class*="active"],
+[class*="panel"] button[class*="active"] {
+  border-left: 3px solid #7C5CBF !important;
+  background-color: #FFF8E7 !important;
+}
+
+/* Result box in AI panel */
+[class*="result"] {
+  background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(180,160,120,0.15) 27px, rgba(180,160,120,0.15) 28px) !important;
+  font-family: Georgia, serif;
+  color: #2C1A0E !important;
+}
+
+/* Pinned entry ribbon bookmark */
+[class*="pinned"]::after,
+[class*="pin"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 20px;
+  background-color: #CC0000;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Progress bar - Bookmark ribbon */
+[class*="progress"] [class*="bar"] {
+  background-color: #8B0000 !important;
+  border-radius: 2px !important;
+}
+
+[class*="progress"] [class*="track"] {
+  background-color: #D4C9B0 !important;
+}
+
+/* New entry modal */
+[class*="modal"],
+[class*="dialog"] {
+  background-color: #FFFDF5 !important;
+  border: 1px solid #D4C09A !important;
+  border-radius: 8px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25) !important;
+}
+
+[class*="modal"] h2,
+[class*="dialog"] h2 {
+  font-family: Georgia, serif;
+  color: #2C1A0E !important;
+}
+
+[class*="modal"] input,
+[class*="dialog"] input {
+  background-color: white !important;
+  border: 1px solid #D4C09A !important;
+  color: #2C1A0E !important;
+}
+
+/* Category color dots */
+.bg-purple-600 { background-color: #7C5CBF !important; }
+.bg-orange-600 { background-color: #C4622D !important; }
+.bg-green-600 { background-color: #2E7D5E !important; }
+.bg-yellow-600 { background-color: #B8860B !important; }
+.bg-pink-600 { background-color: #A0334A !important; }
+.bg-blue-600 { background-color: #2B6CB0 !important; }
+
+.text-purple-600 { color: #7C5CBF !important; }
+.text-orange-600 { color: #C4622D !important; }
+.text-green-600 { color: #2E7D5E !important; }
+.text-yellow-600 { color: #B8860B !important; }
+.text-pink-600 { color: #A0334A !important; }
+.text-blue-600 { color: #2B6CB0 !important; }
+
+/* Separator lines */
+[class*="separator"],
+hr {
+  background-color: #D4C9B0 !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F0E0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4C9B0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0825A;
+}
